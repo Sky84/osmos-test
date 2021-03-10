@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { ItemListDialogComponent } from './item-list-dialog/item-list-dialog.component';
 
 @Component({
   selector: 'app-list',
@@ -19,7 +21,7 @@ export class ListComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.paramsSubscribe = this.activatedRoute.params.subscribe(params => {
@@ -30,6 +32,12 @@ export class ListComponent implements OnInit, OnDestroy {
           this.items.paginator = this.paginator;
           this.items.sort = this.sort;
         })
+    });
+  }
+
+  openDialog(item: any) {
+    this.dialog.open(ItemListDialogComponent, {
+      data: { ...item }
     });
   }
 

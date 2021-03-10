@@ -21,12 +21,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MatSortModule } from '@angular/material/sort';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import { ItemListDialogComponent } from './components/list/item-list-dialog/item-list-dialog.component'; 
+
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
     ListComponent,
-    HeaderComponent
+    HeaderComponent,
+    ItemListDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatTableModule,
     MatToolbarModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
