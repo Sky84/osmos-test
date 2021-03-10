@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemListDialogComponent } from './item-list-dialog/item-list-dialog.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-list',
@@ -21,11 +22,11 @@ export class ListComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private activatedRoute: ActivatedRoute, public dialog: MatDialog) { }
+  constructor(private activatedRoute: ActivatedRoute, public dialog: MatDialog, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.paramsSubscribe = this.activatedRoute.params.subscribe(params => {
-      fetch('https://jsonplaceholder.typicode.com/' + params['type']).then(response => response.json()).then(
+      this.apiService.getListType(params['type']).then(
         (response: any) => {
           this.displayedColumns = Object.keys(response[0]);
           this.items = new MatTableDataSource(response);

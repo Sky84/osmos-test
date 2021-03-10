@@ -1,3 +1,6 @@
 <mat-toolbar>
-    <button mat-button color="primary" *ngFor="let link of links" [routerLink]="link.route">{{link.label}}</button>
+    Welcome
+    <span *ngIf="isAuth()">
+        <button mat-button color="primary" *ngFor="let link of links" [routerLink]="link.route">{{link.label}}</button>
+    </span>
 </mat-toolbar>

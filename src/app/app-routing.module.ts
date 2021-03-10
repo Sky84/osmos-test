@@ -5,6 +5,7 @@ import { ListComponent } from './components/list/list.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'auth', pathMatch:'full' },
   { path: 'auth', component: AuthenticationComponent },
   {
     path: 'list', canActivate: [AuthenticationGuard], children: [
