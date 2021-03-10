@@ -1,0 +1,14 @@
+<div class="authentication">
+    <h1 class="authentication__title">Sign in to access the lists</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your login</mat-label>
+        <input matInput [formControl]="login" required>
+        <mat-error *ngIf="login.invalid">You must enter a login</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [formControl]="password" required>
+        <mat-error *ngIf="password.invalid">You must enter a password.</mat-error>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="onSignIn()" [disabled]="login.invalid || password.invalid">Sign in</button>
+</div>
