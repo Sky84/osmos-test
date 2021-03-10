@@ -1,7 +1,8 @@
-.authentication{
+.authentication {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100%;
+    height: 90vh;
+    animation: 1s fadeIn;
 }
